@@ -7,11 +7,14 @@
 #' @param index Group membership indicator of length p
 #' @return Index \code{imax} of added group, residualized data, truncated chi p-value
 fstep_add1 <- function(x, y, index, ...) UseMethod("fstep_add1")
+
 fstep_add1.default <- function(x, y, index, ...) {
-  U = t(x) %*% y
+  U = t(x)
   labels = unique(index)
-  terms = sapply(labels, function(u) sum(U[index == u]^2))
+  terms = lapply(labels, function(i) {
+    inds = which(index == i)
+    return(sum((U[inds, ] %*% y)^2))
+  })
   imax = which.max(terms)
-#  return(list(imax = 1))
   return(list(imax = imax))
 }
