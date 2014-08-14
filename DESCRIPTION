@@ -1,0 +1,9 @@
+Package: fstep
+Title: Forward stepwise with truncated chi test
+Version: 0.1
+Authors@R: "Joshua Loftus <joftius@stanford.edu> [aut, cre]"
+Description: Implementation of forward stepwise regression with truncated chi p-values.
+Depends: R (>= 3.1.0)
+License: What license is it under?
+LazyData: true
+Suggests: testthat
