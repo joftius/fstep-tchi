@@ -22,6 +22,8 @@ test_that("fstep adds the correct group", {
   }
 )
 
+
+
 test_that("p-values lie in the unit interval", {
   x <- matrix(rep(1,100), nrow=10)
   x[lower.tri(x)] <- 0
@@ -59,3 +61,23 @@ test_that("p-values lie in the unit interval", {
   expect_that(max(fit$p.value) <= 1, is_true())
   }
 )
+
+## source("../../R/pvalue_functions.R")
+## source("../../R/fstep.R")
+
+## n = 50
+## p = 100
+## nsim = 500
+
+## x <- matrix(rep(1, n*p), nrow=n)
+## x[lower.tri(x)] <- 0
+## x <- toeplitz(.8^c(1:p))[1:n,]
+
+## pvals = c()
+## for (i in 1:nsim) {
+##     #x <- matrix(rnorm(n*p), nrow=n)
+##     y = rnorm(n) + 0.7 * x[, ceiling(p*runif(1))]
+##     pvals = c(pvals, fstep(x, y, steps = 1)$p.value)
+## }
+
+## plot(sort(pvals))
