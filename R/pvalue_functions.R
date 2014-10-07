@@ -56,6 +56,7 @@ tchi_trig_solution = function(num, den, w, tol=1.e-10) {
     return(c(max(cands), Inf))
   }
 
+  #cands <- cands[cands >= 0]
   return(c(max(min(cands), 0), max(cands)))
 }
 
