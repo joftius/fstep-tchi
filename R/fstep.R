@@ -87,20 +87,6 @@ fstep.default <- function(x, y, index, wt, Sigma, steps, normalize = TRUE, mc.co
     if (verbose) print(added)
   }
 
-  ## p1 <- qplot(residmat[1,], geom = "histogram")
-  ## p2 <- qplot(residmat[2,], geom = "histogram")
-  ## p3 <- qplot(residmat[3,], geom = "histogram")
-  ## p4 <- qplot(residmat[4,], geom = "histogram")
-  ## p5 <- qplot(residmat[5,], geom = "histogram")
-  ## p6 <- qplot(residmat[6,], geom = "histogram")
-  ## p7 <- qplot(residmat[7,], geom = "histogram")
-  ## p8 <- qplot(residmat[8,], geom = "histogram")
-  ## p9 <- qplot(residmat[9,], geom = "histogram")
-  ## setEPS()
-  ## postscript("art/residuals.eps")
-  ## grid.arrange(p1, p2, p3, p4, ncol=2)
-  ## dev.off()
-
   value <- list(variable=output$imax, p.value=output$p.value, log=output)
   class(value) <- "fstep"
   attr(value, "n") <- nrow(x)
@@ -364,7 +350,7 @@ model_select <- function(fit, alpha = .1, ...) {
 #' @param fit fitted model, the result of \link{fstep}
 plot.fstep <- function(fit, ...) {
   xrange <- 1:attr(fit, "steps")
-  plot.default(x = xrange,  y = fit$p.value, xlab = "Variable", ylab = "P-value", cex = .5, xaxt = "n", pch = 19)
+  plot.default(x = xrange,  y = fit$p.value, xlab = "Variable", ylab = "P-value", cex = .5, xaxt = "n", pch = 19, ylim = c(0,1))
   points.default(x = xrange, y = fit$log$chisq, cex = .5)
   varnames <- attr(fit, "varnames")[fit$variable]
   if (!is.null(varnames)) {
