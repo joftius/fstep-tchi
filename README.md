@@ -7,4 +7,4 @@ Forward stepwise with truncated chi p-values
 
 This version iterates the global null test of http://arxiv.org/abs/1308.3020
 
-It is being replaced 
+It is being replaced, new version available at https://github.com/selective-inference/R
